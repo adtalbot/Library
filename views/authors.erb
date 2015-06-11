@@ -1,0 +1,7 @@
+<h1>List of all Authors:</h1>
+
+<% @authors.each() do |author| %>
+<ul>
+  <li><a href='/authors/<%= author.id() %>'><%= author.name() %></a></li>
+</ul>
+  <% end %>

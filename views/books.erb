@@ -1,0 +1,20 @@
+<h1>List of all Books:</h1>
+
+<% @books.each() do |book| %>
+<ul>
+  <li><a href='/books/<%= book.id() %>'><%= book.name() %></a></li>
+</ul>
+  <% end %>
+<br>
+
+<fieldset>
+  <form action='/books' method='post'>
+    <div class='form=group'>
+      <p>Add Book:</p>
+        <label>Title:<br />
+        <input id='name' name='name' type='text' placeholder='Enter title'></label><br />
+        <label>Author:<br />
+        <input id='author' name='author' type='text' placeholder='Enter author'></label><br />
+    </div>
+  </form>
+</fieldset>

@@ -6,7 +6,7 @@ describe(Author) do
       test_author = Author.new({:name => 'Jane Austen', :id => nil})
       expect(test_author).to(be_an_instance_of(Author))
     end
-    it('is assigned an id by the database') do
+    it('initializes a new instance of author with a database ID') do
       test_author = Author.new({:name => 'Jane Austen', :id => 1})
       expect(test_author).to(be_an_instance_of(Author))
     end
@@ -58,8 +58,8 @@ describe(Author) do
       test_author.save()
       test_author2 = Author.new({:name => 'Charles Dickens', :id => nil})
       test_author2.save()
-      test_author.delete()
-      expect(Author.all()).to(eq([test_author2]))
+      test_author2.delete()
+      expect(Author.all()).to(eq([test_author]))
     end
   end
 end

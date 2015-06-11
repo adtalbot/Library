@@ -52,4 +52,14 @@ describe(Book) do
       expect(test_book.name()).to(eq('Harry Potter'))
     end
   end
+  describe('#delete') do
+    it('deletes a book from the database') do
+      test_book = Book.new({:name => 'Middlesex', :id => nil})
+      test_book.save()
+      test_book2 = Book.new({:name => 'Harry Potter', :id => nil})
+      test_book2.save()
+      test_book2.delete()
+      expect(Book.all()).to(eq([test_book]))
+    end
+  end
 end

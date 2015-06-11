@@ -11,4 +11,9 @@ describe(Author) do
       expect(test_author).to(be_an_instance_of(Author))
     end
   end
+  describe('.all') do
+    it('is empty at first') do
+      expect(Author.all()).to(eq([]))
+    end
+  end
 end

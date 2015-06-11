@@ -31,4 +31,9 @@ class Book
     name = result.first.fetch('name')
     Book.new({:name => name, :id => id})
   end
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE books SET name = ('#{@name}') WHERE id = #{@id};")
+  end
 end

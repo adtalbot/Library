@@ -43,4 +43,13 @@ describe(Book) do
       expect(Book.find(test_book.id())).to(eq(test_book))
     end
   end
+
+  describe('#update') do
+    it('updates a book in the database') do
+      test_book = Book.new({:name => 'Middlesex', :id => nil})
+      test_book.save()
+      test_book.update({:name => 'Harry Potter'})
+      expect(test_book.name()).to(eq('Harry Potter'))
+    end
+  end
 end

@@ -31,9 +31,9 @@ class Author
     name = result.first.fetch('name')
     Author.new({:name => name, :id => id})
   end
-  define_method(:update) do |attributes|    #Fields entered by user in form.
-    @name = attributes.fetch(:name, @name)  #Fetches the new name entered or if the name wasn't changed, fetches the original name.
-    @id = self.id()                         #Calling id method to find id of instance.
-    DB.exec("UPDATE authors SET name = '#{@name}' WHERE id = #{@id};") #Updates the author table in DB to set name field to new name where the ID is equal to ID.
+  define_method(:update) do |attributes|  #Passes in attributes entered by user in update form.
+    @name = attributes.fetch(:name, @name)#Fetches new name or original name if new name wasn't entered.
+    @id = self.id() #Calls id method on instance of author.
+    DB.exec("UPDATE authors SET name = '#{@name}' WHERE id = #{@id};") #Updates in DB the name of instance where id is equal to @id
   end
 end

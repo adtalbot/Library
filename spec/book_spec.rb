@@ -16,4 +16,18 @@ describe(Book) do
       expect(Book.all()).to(eq([]))
     end
   end
+  describe('#save') do
+    it('adds an book to the database') do
+      test_book = Book.new({:name => 'Middlesex', :id => nil})
+      test_book.save()
+      expect(Book.all()).to(eq([test_book]))
+    end
+  end
+  describe('#==') do
+    it('recognizes that two instances with the same name and ID are equal') do
+      test_book = Book.new({:name => 'Middlesex', :id => nil})
+      test_book2 = Book.new({:name => 'Middlesex', :id => nil})
+      expect(test_book).to(eq(test_book2))
+    end
+  end
 end

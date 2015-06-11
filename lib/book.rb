@@ -11,8 +11,15 @@ class Book
     returned_books.each() do |book|
       name = book.fetch('name')
       id = book.fetch('id').to_i()
-      books.push(Book.new({:name => 'Middlesex', :id => nil}))
+      books.push(Book.new({:name => 'Middlesex', :id => id}))
     end
     books
+  end
+  define_method(:save) do
+    result = DB.exec("INSERT INTO books (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first.fetch('id').to_i()
+  end
+  define_method(:==) do |another_book|
+    self.name().==(another_book.name()).&(self.id().==(another_book.id()))
   end
 end
